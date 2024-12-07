@@ -1,0 +1,109 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #1a1a2e, #16213e, #0f3460);
+    color: #f0f0f0;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #00d4ff;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+    padding-left: 20px;
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: rgba(0, 212, 255, 0.1);
+    border-left: 4px solid #00d4ff;
+    border-radius: 6px;
+    color: #e0e0e0;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cta a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    color: #fff;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cta a:hover {
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    box-shadow: 0 6px 20px rgba(255, 65, 108, 0.6);
+    transform: translateY(-3px);
+}
+
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://source.unsplash.com/1600x900/?gaming,technology') no-repeat center center/cover;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+ul li {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.logo {
+    width: 150px; 
+    height: auto; 
+    display: block;
+    margin: 0 auto 20px; 
+}

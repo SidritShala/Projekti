@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 
@@ -13,16 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    
+  
     if (isset($users[$username]) && $users[$username]['password'] === $password) {
-        
+        // Set session variables
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $users[$username]['role'];
 
+        // Redirect based on user role
         if ($_SESSION['role'] === 'admin') {
-            header('Location: admin_dashboard.php');
+            header('Location: admin_dashboard.php'); 
         } else {
-            header('Location: user_dashboard.php');
+            header('Location: index.php'); 
         }
         exit();
     } else {
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <div class="wrapper">
-    <form method="POST" action="login.php">
+    <form method="POST" action="OnlineGameStore-LoginForm.php">
         <h1>Login</h1>
         <?php if (isset($error)): ?>
             <p style="color: red;"><?php echo $error; ?></p>

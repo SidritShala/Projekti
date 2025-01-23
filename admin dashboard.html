@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2b386e;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            background-color: #2b386e;
+            color: white;
+            width: 250px;
+            padding: 20px;
+            position: relative;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #435a94;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .logout {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        .login {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        .login input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2b386e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login button:hover {
+            background-color: #435a94;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Welcome to the Admin Panel</h1>
+</div>
+
+<div class="login" id="loginForm">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+</div>
+
+<div class="container" id="dashboardContainer" style="display: none;">
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#users">Manage Users</a>
+        <a href="#settings">Settings</a>
+        <a href="#reports">Reports</a>
+        <a href="#logout" class="logout">Logout</a>
+    </div>
+    <div class="main-content">
+        <div id="dashboard">
+            <h2>Dashboard</h2>
+            <p>Welcome to the admin panel. Use the menu on the left to navigate through the available options.</p>
+        </div>
+        <div id="users" style="display: none;">
+            <h2>Manage Users</h2>
+            <p>Here you can add, edit, or remove users from the system.</p>
+        </div>
+        <div id="settings" style="display: none;">
+            <h2>Settings</h2>
+            <p>Customize system settings and preferences.</p>
+        </div>
+        <div id="reports" style="display: none;">
+            <h2>Reports</h2>
+            <p>View and generate system reports.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Simple authentication check (replace with real backend validation)
+        if (username === 'admin' && password === 'password') {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboardContainer').style.display = 'flex';
+        } else {
+            alert('Invalid username or password. Please try again.');
+        }
+    }
+
+    const menuLinks = document.querySelectorAll('.sidebar a');
+    const sections = document.querySelectorAll('.main-content > div');
+
+    menuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+
+            sections.forEach(section => {
+                section.style.display = section.id === targetId ? 'block' : 'none';
+            });
+
+            if (targetId === 'logout') {
+                document.getElementById('dashboardContainer').style.display = 'none';
+                document.getElementById('loginForm').style.display = 'block';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

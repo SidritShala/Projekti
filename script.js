@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // First Slider - Top Games
+    
     const topGamesSlider = document.getElementById("top-games-slider");
     const topGamesPrevBtn = document.querySelector(".top-games-slider .prev-btn");
     const topGamesNextBtn = document.querySelector(".top-games-slider .next-btn");
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         topGamesSlider.style.transform = `translateX(-${topGamesIndex * 320}px)`;
     });
 
-    // Second Slider - Latest Releases
+    
     const latestReleasesSlider = document.getElementById("latest-releases-slider");
     const latestReleasesPrevBtn = document.querySelector(".latest-releases-slider .prev-btn");
     const latestReleasesNextBtn = document.querySelector(".latest-releases-slider .next-btn");

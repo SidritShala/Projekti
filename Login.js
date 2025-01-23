@@ -49,3 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Redirecting to forgot password page...");
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButton = document.querySelector(".btn");
+    loginButton.addEventListener("click", (event) => {
+        event.preventDefault(); 
+        window.location.href = "homepage.html"; 
+    });
+});

@@ -1,36 +1,33 @@
 <?php
 session_start();
 
-
 $users = [
     'admin' => ['password' => 'admin123', 'role' => 'admin'],
     'user' => ['password' => 'user123', 'role' => 'user']
 ];
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-  
     if (isset($users[$username]) && $users[$username]['password'] === $password) {
-        // Set session variables
+        // Vendos variablat e sesionit
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $users[$username]['role'];
+        $_SESSION['logged_in'] = true; // Vendos që përdoruesi është kyçur
 
-        // Redirect based on user role
+        // Ridrejto bazuar në rolin e përdoruesit
         if ($_SESSION['role'] === 'admin') {
-            header('Location: admin_dashboard.php'); 
+            header('Location: admindashboard.php');
         } else {
-            header('Location: index.php'); 
+            header('Location: index.php');
         }
         exit();
     } else {
-        $error = "Invalid username or password.";
+        $error = "Emri i përdoruesit ose fjalëkalimi është i pasaktë.";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -3,12 +3,12 @@ session_start();
 
 
 if (!isset($_SESSION['username'])) {
-    header('Location: OnlineGameStore-LoginForm.php'); // Redirect to login page if not logged in
+    header('Location: OnlineGameStore-LoginForm.php'); 
     exit();
 }
 
-$username = htmlspecialchars($_SESSION['username']); // Sanitize username for security
-$role = htmlspecialchars($_SESSION['role']); // Sanitize role for security
+$username = htmlspecialchars($_SESSION['username']); 
+$role = htmlspecialchars($_SESSION['role']); 
 ?>
 
 <!DOCTYPE html>

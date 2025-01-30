@@ -11,23 +11,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     if (isset($users[$username]) && $users[$username]['password'] === $password) {
-        // Vendos variablat e sesionit
+        // Store session variables
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $users[$username]['role'];
-        $_SESSION['logged_in'] = true; // Vendos që përdoruesi është kyçur
+        $_SESSION['logged_in'] = true; 
 
-        // Ridrejto bazuar në rolin e përdoruesit
+        // ✅ Set `adminemail` session variable for admindashboard.php compatibility
         if ($_SESSION['role'] === 'admin') {
+            $_SESSION['adminemail'] = $username; // This is the fix!
             header('Location: admindashboard.php');
         } else {
             header('Location: index.php');
         }
         exit();
     } else {
-        $error = "Emri i përdoruesit ose fjalëkalimi është i pasaktë.";
+        $error = "Invalid username or password.";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

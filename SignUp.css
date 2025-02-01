@@ -1,4 +1,4 @@
-
+/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +6,7 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* Body styling */
 body {
     display: flex;
     justify-content: center;
@@ -16,7 +17,8 @@ body {
     background-position: center;
 }
 
-.wrapper {
+/* Form container */
+.form-container {
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -25,23 +27,20 @@ body {
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
-}
-
-.wrapper h1 {
-    font-size: 36px;
     text-align: center;
 }
 
-.wrapper .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
+/* Title */
+.form-container h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
-.input-box input {
+/* Input boxes */
+.box {
     width: 100%;
-    height: 100%;
+    height: 45px;
     background: transparent;
     border: none;
     outline: none;
@@ -49,46 +48,16 @@ body {
     border-radius: 40px;
     font-size: 16px;
     color: #fff;
-    padding: 20px 45px 20px 20px;
+    padding: 15px;
+    margin: 10px 0;
 }
 
-.input-box input::placeholder {
-    color: #fff;
+.box::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.input-box i {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-
-.wrapper .agree-terms {
-    font-size: 14.5px;
-    margin: -10px 0 20px;
-}
-
-.agree-terms label {
-    display: flex;
-    align-items: center;
-}
-
-.agree-terms label input {
-    accent-color: #fff;
-    margin-right: 5px;
-}
-
-.agree-terms a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.agree-terms a:hover {
-    text-decoration: underline;
-}
-
-.wrapper .btn {
+/* Submit button */
+.btn {
     width: 100%;
     height: 45px;
     background: #fff;
@@ -100,42 +69,57 @@ body {
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    transition: 0.3s ease;
 }
 
-.wrapper .login-link {
+.btn:hover {
+    background: #2b386e;
+    color: #fff;
+}
+
+/* Error messages */
+.error {
+    display: block;
+    font-size: 14px;
+    color: #ff4d4d;
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
+
+/* Success message */
+.success {
+    font-size: 14px;
+    color: #4CAF50;
+    margin-top: 10px;
+}
+
+/* Login link */
+.form-container p {
     font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
+    color: #fff;
+    margin-top: 15px;
 }
 
-.login-link p a {
+.form-container p a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
 
-.login-link p a:hover {
+.form-container p a:hover {
     text-decoration: underline;
 }
 
-
-@media (max-width: 768px) {
-    .wrapper {
-        width: 90%;
+/* Responsive Design */
+@media (max-width: 480px) {
+    .form-container {
+        width: 100%;
         padding: 20px;
     }
 
-    .wrapper h1 {
-        font-size: 28px;
-    }
-
-    .input-box input {
+    .box {
         font-size: 14px;
-        padding: 15px 40px 15px 15px;
-    }
-
-    .input-box i {
-        font-size: 18px;
+        padding: 12px;
     }
 
     .btn {
@@ -143,41 +127,7 @@ body {
         font-size: 14px;
     }
 
-    .agree-terms {
-        font-size: 13px;
-    }
-
-    .login-link p {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    .wrapper {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .wrapper h1 {
-        font-size: 24px;
-    }
-
-    .input-box input {
-        font-size: 12px;
-        padding: 10px 35px 10px 10px;
-    }
-
-    .btn {
-        height: 35px;
-        font-size: 12px;
-    }
-
-    .agree-terms {
-        font-size: 12px;
-        text-align: center;
-    }
-
-    .login-link p {
+    .form-container p {
         font-size: 12px;
     }
 }

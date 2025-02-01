@@ -1,3 +1,12 @@
+<?php
+if (session_start() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['adminemail'])) {
+    header("Location:admindashboard.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,9 +69,9 @@
         <div class="recent-updates">
             <h2>Recent Updates</h2>
             <ul>
-                <li>Babar Received his order of USB</li>
-                <li>Ali Received his order of USB</li>
-                <li>Ramzan Received his order of USB</li>
+                <li> Antony98 Received his order of GTA</li>
+                <li> Sidi8 Received his order of FC25</li>
+                <li>Drini Received his order of Ghost of Tsushima</li>
             </ul>
         </div>
 
@@ -80,7 +89,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Mini USB</td>
+                        <td>Minecraft</td>
                         <td>4583</td>
                         <td>Due</td>
                         <td>Pending</td>

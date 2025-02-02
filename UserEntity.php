@@ -10,8 +10,8 @@ class UserEntity
     private $address;
     private $birth_date;
 
-
-    function __construct($id, $username, $email, $password, $role, $address, $birth_date)
+    // Konstruktori ku 'id' është opsional
+    function __construct($username, $email, $password, $role, $address, $birth_date, $id = null)
     {
         $this->id = $id;
         $this->username = $username;
@@ -26,31 +26,36 @@ class UserEntity
     {
         return $this->id;
     }
+
     function getUsername()
     {
         return $this->username;
     }
+
     function getEmail()
     {
         return $this->email;
     }
+
     function getPassword()
     {
         return $this->password;
     }
+
     function getRole()
     {
         return $this->role;
     }
+
     function getAddress()
     {
         return $this->address;
     }
+
     function getBirth_Date()
     {
         return $this->birth_date;
     }
-
 
     function __tostring()
     {

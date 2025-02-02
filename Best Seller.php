@@ -88,7 +88,7 @@ $news = [
         </div>
         <nav>
             <ul>
-                <li><a href="Homepage.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="Games.html">Games</a></li>
                 <li><a href="VR Games.html" class="active">VR World</a></li>
                 <li><a href="About.html">About Us</a></li>

@@ -1,84 +1,20 @@
 <?php
+class DbProduct {
+    private $server = "127.0.0.1";
+    private $username = "root";
+    private $password = "";
+    private $database = "illyrian_playhouse";
+    private $conn;
 
-include_once 'DBConnection.php';
-include_once 'ProductEntity.php';
-
-class DBProduct
-{
-    private $connection;
-
-    function __construct()
-    {
-        $conn = new DBConnection;
-        $this->connection = $conn;
-    }
-
-    function insertProduct($product)
-    {
-        $conn = $this->connection->startConn();
-
-        $id = $product->getId();
-        $name = $product->getName(); // Added line to get the name
-        $image = $product->getImage();
-        $price = $product->getPrice();
-
-        $sql = "INSERT INTO products(id, name, image, price) VALUES ('$id','$name','$image','$price')";
-        if (mysqli_query($conn, $sql)) {
-            echo 'Product inserted successfully!';
-        } else {
-            echo 'This is an ERROR: ' . mysqli_error($conn);
+    public function getConnection() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->server . ";dbname=" . $this->database, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+        } catch(PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
         }
-    }
-
-    function getProducts()
-    {
-        $conn = $this->connection->startConn();
-
-        $sql = "SELECT * FROM products";
-
-        $products = [];
-
-        if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-                $products[] = new ProductEntity(
-                    $row['id'],
-                    $row['name'], // Corrected order of parameters
-                    $row['price'],
-                    $row['image']
-                );
-            }
-        } else {
-            return null;
-        }
-        return $products;
-    }
-
-    function getProductByNameAndId($name, $product_id)
-    {
-        $conn = $this->connection->startConn();
-
-        $sql = "SELECT * FROM products WHERE name = '$name' OR id = '$product_id'";
-
-        if ($statement = $conn->query($sql)) {
-            $result = $statement->fetch_assoc(); // Use fetch_assoc() to match the getProductById method
-            return $result ? new ProductEntity($result['id'], $result['name'], $result['price'], $result['image']) : null;
-        } else {
-            return null;
-        }
-    }
-
-    function getProductById($product_id)
-    {
-        $conn = $this->connection->startConn();
-
-        $sql = "SELECT * FROM products WHERE id = '$product_id'";
-
-        if ($statement = $conn->query($sql)) {
-            $result = $statement->fetch_assoc(); // Use fetch_assoc() to get associative array
-            return $result ? new ProductEntity($result['id'], $result['name'], $result['price'], $result['image']) : null;
-        } else {
-            return null;
-        }
+        return $this->conn;
     }
 }
 ?>

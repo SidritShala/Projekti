@@ -5,10 +5,10 @@ include_once('UserController.php');
 if (session_start() === PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['adminemail'])) {
-    header("Location:login.php");
-    exit;
-}
+//if (!isset($_SESSION['adminemail'])) {
+//    header("Location:OnlineGameStore-LoginForm.php");
+//    exit;
+//}
 $UserController = new UserController();
 
 $users = $UserController->getAllUsers();
@@ -26,17 +26,17 @@ $successMessage = $UserController->getSuccessMessage();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="adminusers.css">
+
     <title>Admin Users</title>
 </head>
 
 <body>
     <div class="sidebar">
-        <h2>Furnitia</h2>
+        <h2>Illyrian PlayHouse</h2>
         <ul>
-            <li><a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="admindashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="adminProducts.php"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="adminNews.php"><i class="fa-solid fa-blog"></i> Blog</a></li>
             <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
             <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
         </ul>

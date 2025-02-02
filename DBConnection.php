@@ -21,7 +21,9 @@ class DBConnection
             die("Database connection failed: " . $this->conn->connect_error);
         }
     
-        var_dump("Database connected successfully!"); // KONTROLL për lidhjen
+        // Heqim var_dump që tregon mesazhin për lidhjen
+        // var_dump("Database connected successfully!"); <-- Hiqni këtë linjë
+
         return $this->conn;
     }
     
@@ -35,4 +37,5 @@ class DBConnection
 }
 
 ?>
+
 

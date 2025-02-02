@@ -20,13 +20,15 @@ class UserRepository
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+                // Heqim id dhe e përdorim vetëm username dhe të tjera
                 $users[] = new UserEntity(
-                    $row['username'], 
-                    $row['email'], 
-                    $row['password'], 
-                    $row['role'], 
-                    $row['address'], 
+                    $row['username'],
+                    $row['email'],
+                    $row['password'],
+                    $row['role'],
+                    $row['address'],
                     $row['birth_date']
+                    // id është i opsional, nuk kalohen këtu
                 );
             }
         }
@@ -34,23 +36,24 @@ class UserRepository
         return $users;
     }
 
-    public function getUserByEmail($email)
+    public function getUserByUsername($username)
     {
-        $query = "SELECT * FROM users WHERE email = ?";
+        $query = "SELECT * FROM users WHERE username = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("s", $email);
+        $stmt->bind_param("s", $username); // Kërkojmë me 'username'
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows === 1) {
             $row = $result->fetch_assoc();
             return new UserEntity(
-                $row['username'], 
-                $row['email'], 
-                $row['password'], 
-                $row['role'],  
-                $row['address'], 
+                $row['username'],
+                $row['email'],
+                $row['password'],
+                $row['role'],
+                $row['address'],
                 $row['birth_date']
+                // id është i opsional, nuk kalohen këtu
             );
         }
 
@@ -65,19 +68,19 @@ class UserRepository
         return $stmt->execute();
     }
 
-    public function deleteUser($email)
+    public function deleteUser($username)
     {
-        $query = "DELETE FROM users WHERE email = ?";
+        $query = "DELETE FROM users WHERE username = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("s", $email);
+        $stmt->bind_param("s", $username); // Fshijmë me 'username'
         return $stmt->execute();
     }
 
-    public function updateUser($email, $username, $password, $role, $address, $birth_date)
+    public function updateUser($username, $newUsername, $newEmail, $newPassword, $newRole, $newAddress, $newBirthDate)
     {
-        $query = "UPDATE users SET username = ?, password = ?, role = ?, address = ?, birth_date = ? WHERE email = ?";
+        $query = "UPDATE users SET username = ?, email = ?, password = ?, role = ?, address = ?, birth_date = ? WHERE username = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("sssss", $username, $password, $role, $address, $birth_date, $email);
+        $stmt->bind_param("sssssss", $newUsername, $newEmail, $newPassword, $newRole, $newAddress, $newBirthDate, $username); // Azhurnojmë me 'username'
         return $stmt->execute();
     }
 }

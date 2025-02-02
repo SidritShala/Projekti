@@ -1,186 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
-
-* {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    text-transform: capitalize;
-}
+/* OnlineGameStore-LoginForm.css */
 
 body {
-    background: linear-gradient(135deg, #3b5d50, #67957f);
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-html {
-    font-size: 62.5%;
-    overflow-x: hidden;
-}
-
 .login-page {
-    width: 50rem;
-    padding: 3rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 3rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: slideIn 0.5s ease-in-out;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
 
-.login-page form {
-    width: 100%;
-    padding: 4rem;
-    background: #ffffff;
-    border-radius: 2rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.login-page form h3 {
-    font-size: 3.2rem;
-    padding-bottom: 2.5rem;
-    color: #3b5d50;
+#loginForm h3 {
+    color: #2b386e;
     text-align: center;
-    font-weight: 600;
+    margin-bottom: 20px;
 }
 
-.login-page form .box {
+#loginForm .box {
     width: 100%;
-    text-transform: none;
-    font-size: 1.8rem;
-    color: #3b5d50;
-    padding: 1.5rem 1.8rem;
-    border: 0.1rem solid #3b5d50;
-    margin: 1.2rem 0;
-    border-radius: 1rem;
-    background: #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.login-page form .box::placeholder {
-    color: #a0a0a0;
+#loginForm .box:focus {
+    border-color: #2b386e;
 }
 
-.login-page form .remember {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2.5rem 0;
-}
-
-.login-page form .remember label {
-    cursor: pointer;
-    font-size: 1.6rem;
-    color: #3b5d50;
-}
-
-.login-page form .btn {
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 2rem;
-    color: #ffffff;
-    background: #3b5d50;
-    border: none;
-    border-radius: 1rem;
-    transition: background 0.3s ease;
-}
-
-.login-page form .btn:hover {
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.login-page form p {
-    padding-top: 2.5rem;
-    font-size: 1.6rem;
-    color: #3b5d50;
-    text-align: center;
-}
-
-.login-page form p a {
-    color: #3b5d50;
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-.login-page form p a:hover {
-    color: #2a4237;
-}
-
-.error {
+#loginForm .error {
     color: red;
-    margin-top: 0.5rem;
-    font-size: 1.4rem;
+    font-size: 0.9em;
 }
 
-/* Responsive  */
-
-@media (max-width: 1024px) {
-    .login-page {
-        width: 70%;
-    }
-
-    .login-page form {
-        padding: 3rem;
-    }
-
-    .login-page form h3 {
-        font-size: 2.8rem;
-    }
+#loginForm .remember {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
 }
 
-@media (max-width: 768px) {
-    .login-page {
-        width: 90%;
-        padding: 2rem;
-    }
-
-    .login-page form {
-        padding: 2rem;
-    }
-
-    .login-page form h3 {
-        font-size: 2.4rem;
-    }
+#loginForm .remember label {
+    margin-left: 5px;
+    color: #2b386e;
 }
 
-@media (max-width: 480px) {
-    .login-page {
-        width: 100%;
-        padding: 1.5rem;
-    }
+#loginForm .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #2b386e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-    .login-page form {
-        padding: 1.5rem;
-    }
+#loginForm .btn:hover {
+    background-color: #1e2857;
+}
 
-    .login-page form h3 {
-        font-size: 2rem;
-    }
+#loginForm p {
+    text-align: center;
+    color: #2b386e;
+}
 
-    .login-page form .box {
-        font-size: 1.6rem;
-        padding: 1.2rem 1.5rem;
-    }
+#loginForm a {
+    color: #2b386e;
+    text-decoration: none;
+}
 
-    .login-page form .btn {
-        padding: 1.2rem;
-        font-size: 1.8rem;
-    }
-
-    .login-page form p {
-        font-size: 1.4rem;
-    }
-
-    .login-page form .remember label {
-        font-size: 1.4rem;
-    }
+#loginForm a:hover {
+    text-decoration: underline;
 }

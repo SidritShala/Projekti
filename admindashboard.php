@@ -20,12 +20,12 @@ if (session_start() === PHP_SESSION_NONE) {
 
 <body>
     <div class="sidebar">
-        <h2>FitProShop</h2>
+        <h2>Illyrian PlayHouse</h2>
         <ul>
             <!-- <li><a href=""><i class="fas fa-home"></i> Dashboard</a></li> -->
             <li><a href="AdminUser.php"><i class="fas fa-users"></i>Users</a></li>
             <li><a href="adminProducts.php"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="adminNews.php"><i class="fas fa-chart-line"></i> News </a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> News </a></li>
             <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
             <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
         </ul>

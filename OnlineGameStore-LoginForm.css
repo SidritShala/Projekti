@@ -1,151 +1,186 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
 }
 
-body{
+body {
+    background: linear-gradient(135deg, #3b5d50, #67957f);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #3a4b7b;
-    background-size: cover;
-    background-position: center;
+    height: 100vh;
 }
 
-.wrapper{
-    width: 420px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-.wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-    color: #fff;
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
 }
 
-.wrapper .input-box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-}
-
-.input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
-}
-
-.input-box input::placeholder{
-    color: #fff;
-}
-
-.input-box i{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-.wrapper .remember-forgot{
+.login-page {
+    width: 50rem;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 3rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-.remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 3px;
+    align-items: center;
+    justify-content: center;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-.remember-forgot a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.remember-forgot a:hover{
-    text-decoration: underline;
-}
-
-.wrapper .btn{
+.login-page form {
     width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
+    padding: 4rem;
+    background: #ffffff;
+    border-radius: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.wrapper .register-link{
-    font-size: 14.5px;
+.login-page form h3 {
+    font-size: 3.2rem;
+    padding-bottom: 2.5rem;
+    color: #3b5d50;
     text-align: center;
-    margin: 20px 0 15px;
-
-}
-.register-link p a{
-    color: #fff;
-    text-decoration: none;
     font-weight: 600;
 }
-.register-link p a:hover {
+
+.login-page form .box {
+    width: 100%;
+    text-transform: none;
+    font-size: 1.8rem;
+    color: #3b5d50;
+    padding: 1.5rem 1.8rem;
+    border: 0.1rem solid #3b5d50;
+    margin: 1.2rem 0;
+    border-radius: 1rem;
+    background: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-page form .box::placeholder {
+    color: #a0a0a0;
+}
+
+.login-page form .remember {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0;
+}
+
+.login-page form .remember label {
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #3b5d50;
+}
+
+.login-page form .btn {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 2rem;
+    color: #ffffff;
+    background: #3b5d50;
+    border: none;
+    border-radius: 1rem;
+    transition: background 0.3s ease;
+}
+
+.login-page form .btn:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-page form p {
+    padding-top: 2.5rem;
+    font-size: 1.6rem;
+    color: #3b5d50;
+    text-align: center;
+}
+
+.login-page form p a {
+    color: #3b5d50;
     text-decoration: underline;
+    transition: color 0.3s ease;
 }
-@media (max-width: 480px){
-    .wrapper{
+
+.login-page form p a:hover {
+    color: #2a4237;
+}
+
+.error {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+}
+
+/* Responsive  */
+
+@media (max-width: 1024px) {
+    .login-page {
+        width: 70%;
+    }
+
+    .login-page form {
+        padding: 3rem;
+    }
+
+    .login-page form h3 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-page {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .login-page form {
+        padding: 2rem;
+    }
+
+    .login-page form h3 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-page {
         width: 100%;
-        padding: 15px;
+        padding: 1.5rem;
     }
 
-    .wrapper h1{
-        font-size: 24px;
+    .login-page form {
+        padding: 1.5rem;
     }
 
-    .input-box input{
-        font-size: 14px;
-        padding: 15px;
-    }
-    
-    .input-box i{
-        font-size: 18px;
+    .login-page form h3 {
+        font-size: 2rem;
     }
 
-    .remember-forgot{
-        font-size: 12px;
-        flex-direction: column;
-        text-align: center;
+    .login-page form .box {
+        font-size: 1.6rem;
+        padding: 1.2rem 1.5rem;
     }
 
-    .remember-forgot a{
-        font-size: 12px;
+    .login-page form .btn {
+        padding: 1.2rem;
+        font-size: 1.8rem;
     }
 
-    .btn{
-        height: 35px;
-        font-size: 14px;
+    .login-page form p {
+        font-size: 1.4rem;
     }
 
-    .register-link p{
-        font-size: 12px;
+    .login-page form .remember label {
+        font-size: 1.4rem;
     }
 }
-

@@ -1,53 +1,84 @@
 <?php
-// Përfshini klasën e lidhjes dhe DBProduct
-include_once 'DbConnection.php';
-include_once 'DBProduct.php';
 
-$dbProduct = new DBProduct(); // Krijoni një instancë të klasës DBProduct
-$products = $dbProduct->getAllProducts(); // Thirrni funksionin për të marrë të dhënat nga tabela
+include_once 'DBConnection.php';
+include_once 'ProductEntity.php';
+
+class DBProduct
+{
+    private $connection;
+
+    function __construct()
+    {
+        $conn = new DBConnection;
+        $this->connection = $conn;
+    }
+
+    function insertProduct($product)
+    {
+        $conn = $this->connection->startConn();
+
+        $id = $product->getId();
+        $name = $product->getName(); // Added line to get the name
+        $image = $product->getImage();
+        $price = $product->getPrice();
+
+        $sql = "INSERT INTO products(id, name, image, price) VALUES ('$id','$name','$image','$price')";
+        if (mysqli_query($conn, $sql)) {
+            echo 'Product inserted successfully!';
+        } else {
+            echo 'This is an ERROR: ' . mysqli_error($conn);
+        }
+    }
+
+    function getProducts()
+    {
+        $conn = $this->connection->startConn();
+
+        $sql = "SELECT * FROM products";
+
+        $products = [];
+
+        if ($result = $conn->query($sql)) {
+            while ($row = $result->fetch_assoc()) {
+                $products[] = new ProductEntity(
+                    $row['id'],
+                    $row['name'], // Corrected order of parameters
+                    $row['price'],
+                    $row['image']
+                );
+            }
+        } else {
+            return null;
+        }
+        return $products;
+    }
+
+    function getProductByNameAndId($name, $product_id)
+    {
+        $conn = $this->connection->startConn();
+
+        $sql = "SELECT * FROM products WHERE name = '$name' OR id = '$product_id'";
+
+        if ($statement = $conn->query($sql)) {
+            $result = $statement->fetch_assoc(); // Use fetch_assoc() to match the getProductById method
+            return $result ? new ProductEntity($result['id'], $result['name'], $result['price'], $result['image']) : null;
+        } else {
+            return null;
+        }
+    }
+
+    function getProductById($product_id)
+    {
+        $conn = $this->connection->startConn();
+
+        $sql = "SELECT * FROM products WHERE id = '$product_id'";
+
+        if ($statement = $conn->query($sql)) {
+            $result = $statement->fetch_assoc(); // Use fetch_assoc() to get associative array
+            return $result ? new ProductEntity($result['id'], $result['name'], $result['price'], $result['image']) : null;
+        } else {
+            return null;
+        }
+    }
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
-</head>
-<body>
-    <div class="product-list">
-        <h2>Product List</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // Kontrolloni nëse janë marrë produkte
-                if ($products) {
-                    // Kaloni përmes produkteve dhe shfaqni të dhënat në tabelë
-                    foreach ($products as $product) {
-                        echo "<tr>
-                                <td>{$product->getId()}</td>
-                                <td>{$product->getName()}</td>
-                                <td>{$product->getDescription()}</td>
-                                <td><img src='{$product->getImage()}' alt='{$product->getName()}' width='50'></td>
-                                <td>\${$product->getPrice()}</td>
-                              </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='5'>No products found</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>

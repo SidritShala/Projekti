@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,13 +7,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #1e2a5a; 
+    background-color: #1e2a5a;
     color: white;
     line-height: 1.6;
 }
 
 header {
-    background-color: #0e1536; 
+    background-color: #0e1536;
     padding: 20px;
 }
 
@@ -57,7 +58,7 @@ nav ul li a:hover {
 
 .search-bar button {
     padding: 10px;
-    background-color: #3a4b7b; 
+    background-color: #3a4b7b;
     border: none;
     color: white;
     border-radius: 5px;
@@ -74,7 +75,7 @@ main {
 
 .best-seller {
     padding: 20px;
-    background-color: #2e3a6a; 
+    background-color: #2e3a6a;
     border-radius: 10px;
 }
 
@@ -91,7 +92,7 @@ main {
 }
 
 .product {
-    background-color: #3a4b7b; 
+    background-color: #3a4b7b;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -113,7 +114,7 @@ main {
 
 .buy-button {
     padding: 10px;
-    background-color: #1e2a5a; 
+    background-color: #1e2a5a;
     border: none;
     color: white;
     cursor: pointer;
@@ -121,7 +122,7 @@ main {
 }
 
 .buy-button:hover {
-    background-color: #3a4b7b; 
+    background-color: #3a4b7b;
 }
 
 .pagination {
@@ -131,7 +132,7 @@ main {
 
 .page-button {
     padding: 10px 20px;
-    background-color: #1e2a5a; 
+    background-color: #1e2a5a;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -142,7 +143,7 @@ main {
 }
 
 footer {
-    background-color: #0e1536; 
+    background-color: #0e1536;
     padding: 20px;
     text-align: center;
 }
@@ -164,8 +165,9 @@ footer .footer-links a {
 footer .footer-links a:hover {
     text-decoration: underline;
 }
+
 .modal {
-    display: none; 
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -173,7 +175,7 @@ footer .footer-links a:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
@@ -181,7 +183,7 @@ footer .footer-links a:hover {
     margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
-    width: 50%; 
+    width: 50%;
     color: white;
 }
 
@@ -223,9 +225,10 @@ footer .footer-links a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
 .reviews {
     padding: 20px;
-    background-color: #2e3a6a; 
+    background-color: #2e3a6a;
     border-radius: 10px;
     margin-top: 20px;
 }
@@ -243,7 +246,7 @@ footer .footer-links a:hover {
 }
 
 .review {
-    background-color: #3a4b7b; 
+    background-color: #3a4b7b;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
@@ -259,11 +262,12 @@ footer .footer-links a:hover {
 .review span {
     font-size: 14px;
     font-style: italic;
-    color: #cfcfcf; 
+    color: #cfcfcf;
 }
+
 .news {
     padding: 20px;
-    background-color: #2e3a6a; 
+    background-color: #2e3a6a;
     border-radius: 10px;
     margin-top: 20px;
 }
@@ -273,6 +277,7 @@ footer .footer-links a:hover {
     font-size: 32px;
     margin-bottom: 20px;
 }
+
 .news-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -280,7 +285,7 @@ footer .footer-links a:hover {
 }
 
 .news-item {
-    background-color: #3a4b7b; 
+    background-color: #3a4b7b;
     padding: 15px;
     border-radius: 10px;
 }
@@ -299,7 +304,7 @@ footer .footer-links a:hover {
 
 .newsletter {
     padding: 20px;
-    background-color: #2e3a6a; 
+    background-color: #2e3a6a;
     border-radius: 10px;
     margin-top: 20px;
     text-align: center;
@@ -333,7 +338,7 @@ footer .footer-links a:hover {
 
 .newsletter .subscribe-button {
     padding: 10px 20px;
-    background-color: #1e2a5a; 
+    background-color: #1e2a5a;
     color: white;
     border: none;
     border-radius: 5px;
@@ -342,6 +347,102 @@ footer .footer-links a:hover {
 }
 
 .newsletter .subscribe-button:hover {
-    background-color: #3a4b7b; 
+    background-color: #3a4b7b;
 }
 
+/* Media Queries for Responsiveness */
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    header {
+        text-align: center;
+        padding: 20px 10px;
+    }
+
+    header .logo h1 {
+        font-size: 22px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .search-bar input {
+        width: 200px;
+    }
+
+    .best-seller h2 {
+        font-size: 28px;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product {
+        padding: 15px;
+    }
+
+    .pagination .page-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .reviews h2,
+    .news h2 {
+        font-size: 28px;
+    }
+
+    .review-grid,
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .newsletter form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .newsletter input {
+        width: 250px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    header .logo h1 {
+        font-size: 18px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .best-seller h2 {
+        font-size: 24px;
+    }
+
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews h2,
+    .news h2 {
+        font-size: 24px;
+    }
+
+    .review-grid,
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter input {
+        width: 220px;
+    }
+}

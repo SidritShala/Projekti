@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,15 +7,14 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1d1d1d; 
-    color: #ffffff; 
+    background-color: #1d1d1d;
+    color: #ffffff;
     line-height: 1.6;
 }
 
-
 header {
-    background-color: #2b386e; 
-    color: #ffffff; 
+    background-color: #2b386e;
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,27 +36,26 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ffc107; 
+    color: #ffc107;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #0078d7; 
+    color: #0078d7;
 }
 
-
 .hero {
-    background: linear-gradient(to bottom right, #2b386e, #1d1d1d); 
+    background: linear-gradient(to bottom right, #2b386e, #1d1d1d);
     text-align: center;
     padding: 80px 20px;
-    color: #ffffff; 
+    color: #ffffff;
 }
 
 .hero h2 {
     font-size: 3em;
     margin-bottom: 20px;
-    color: #0078d7; 
+    color: #0078d7;
 }
 
 .hero p {
@@ -66,8 +65,8 @@ nav ul li a:hover {
 
 .hero button {
     padding: 15px 30px;
-    background-color: #ffc107; 
-    color: #2b386e; 
+    background-color: #ffc107;
+    color: #2b386e;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -76,18 +75,17 @@ nav ul li a:hover {
 }
 
 .hero button:hover {
-    background-color: #e0a806; 
+    background-color: #e0a806;
 }
 
-
 .features {
-    background-color: #1e1e1e; 
+    background-color: #1e1e1e;
     text-align: center;
     padding: 60px 20px;
 }
 
 .features h2 {
-    color: #ffc107; 
+    color: #ffc107;
     margin-bottom: 30px;
 }
 
@@ -98,7 +96,7 @@ nav ul li a:hover {
 }
 
 .features .feature {
-    background-color: #2b386e; 
+    background-color: #2b386e;
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
@@ -107,10 +105,9 @@ nav ul li a:hover {
 }
 
 .features .feature h3 {
-    color: #0078d7; 
+    color: #0078d7;
     margin-bottom: 10px;
 }
-
 
 .gallery {
     text-align: center;
@@ -129,7 +126,7 @@ nav ul li a:hover {
 }
 
 .gallery .game-card {
-    background-color: #2b386e; 
+    background-color: #2b386e;
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
@@ -168,7 +165,6 @@ nav ul li a:hover {
     background-color: #e0a806; /* Darker Amber */
 }
 
-
 footer {
     background-color: #2b386e; /* Main Theme Color */
     color: #ffffff; /* White text */
@@ -185,4 +181,107 @@ footer {
 
 .footer-links a:hover {
     color: #0078d7; /* Light Blue */
+}
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 10px;
+    }
+
+    header .logo h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    .hero button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .features .feature {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .gallery .game-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .footer-links a {
+        margin: 5px;
+    }
+}
+
+/* Very Small Devices (Mobile Phones) */
+@media (max-width: 480px) {
+    header .logo h1 {
+        font-size: 20px;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .hero button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+
+    .features h2 {
+        font-size: 1.5em;
+    }
+
+    .gallery h2 {
+        font-size: 1.5em;
+    }
+
+    .features .feature {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .gallery .game-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .footer-links a {
+        font-size: 0.9em;
+    }
 }

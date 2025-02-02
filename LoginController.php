@@ -34,7 +34,7 @@ class LoginController
                     header("Location: index.php");
                 } else {
                     $_SESSION['adminemail'] = $email;
-                    header("Location: dashboard.php");
+                    header("Location: admindashboard.php");
                 }
                 exit;
             }

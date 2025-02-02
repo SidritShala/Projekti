@@ -7,8 +7,8 @@ session_start();
  //   exit();
 //}
 
-$username = htmlspecialchars($_SESSION['username']); 
-$role = htmlspecialchars($_SESSION['role']); 
+//$username = htmlspecialchars($_SESSION['username']); 
+//$role = htmlspecialchars($_SESSION['role']); 
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $role = htmlspecialchars($_SESSION['role']);
             <ul>
                 <li><a href="Games.html">Games</a></li>
                 <li><a href="VR Games.html">VR World</a></li>
-                <li><a href="Best Seller.html">Best Seller</a></li>
+                <li><a href="Best Seller.php">Best Seller</a></li>
                 <li><a href="About.html">About</a></li>
             </ul>
         </nav>

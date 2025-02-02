@@ -15,7 +15,7 @@ $products = $controller->getAllProducts();
 </head>
 <body>
     <div class="sidebar">
-        <h2>Furnitia</h2>
+        <h2>Illyrian PlayHouse</h2>
         <ul>
             <li><a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="AdminUser.php"><i class="fas fa-users"></i> Users</a></li>
@@ -53,7 +53,11 @@ $products = $controller->getAllProducts();
             <tr>
                 <td><?php echo $product->id; ?></td>
                 <td><?php echo $product->name; ?></td>
-                <td><img src="<?php echo $product->image; ?>" alt="<?php echo $product->name; ?>"></td>
+                <td>
+                    <!-- Sigurohu që path-i i imazhit të jetë i saktë -->
+                    <img src="<?php echo $product->image; ?>" alt="<?php echo $product->name; ?>" style="width: 100px; height: auto;">
+
+                </td>
                 <td><?php echo $product->description; ?></td>
                 <td><?php echo $product->price; ?></td>
             </tr>
@@ -62,3 +66,4 @@ $products = $controller->getAllProducts();
     </div>
 </body>
 </html>
+

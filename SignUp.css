@@ -1,183 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 
 * {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
 }
 
 body {
+    background: linear-gradient(135deg, #2b386e, #67957f);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #3a4b7b;
-    background-size: cover;
-    background-position: center;
+    height: 100vh;
 }
 
-.wrapper {
-    width: 420px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
 }
 
-.wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-}
-
-.wrapper .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-}
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
-}
-
-.input-box input::placeholder {
-    color: #fff;
-}
-
-.input-box i {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-
-.wrapper .agree-terms {
-    font-size: 14.5px;
-    margin: -10px 0 20px;
-}
-
-.agree-terms label {
+.form-container {
+    width: 40rem; 
+    padding: 2rem; 
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 2rem; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
+    justify-content: center;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-.agree-terms label input {
-    accent-color: #fff;
-    margin-right: 5px;
-}
-
-.agree-terms a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.agree-terms a:hover {
-    text-decoration: underline;
-}
-
-.wrapper .btn {
+.form-container form {
     width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
+    padding: 3rem; 
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.wrapper .login-link {
-    font-size: 14.5px;
+.form-container form h3 {
+    font-size: 2.8rem; 
+    padding-bottom: 2rem; 
+    color: #2b386e;
     text-align: center;
-    margin: 20px 0 15px;
-}
-
-.login-link p a {
-    color: #fff;
-    text-decoration: none;
     font-weight: 600;
 }
 
-.login-link p a:hover {
-    text-decoration: underline;
+.form-container form .box {
+    width: 100%;
+    text-transform: none;
+    font-size: 1.6rem; 
+    color: #2b386e;
+    padding: 1rem 1.5rem; 
+    border: 0.1rem solid #2b386e;
+    margin: 1rem 0;
+    border-radius: 0.8rem;
+    background: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.form-container form .box::placeholder {
+    color: #a0a0a0;
+}
+
+.form-container form .btn {
+    width: 100%;
+    padding: 1rem; 
+    font-size: 1.8rem; 
+    color: #ffffff;
+    background: #2b386e;
+    border: none;
+    border-radius: 0.8rem; 
+    transition: background 0.3s ease;
+    margin-top: 2rem;
+}
+
+.form-container form .btn:hover {
+    background: #2a4237;
+    font-weight: bold;
+}
+
+.form-container form p {
+    padding-top: 2rem; 
+    font-size: 1.4rem; 
+    color: #2b386e;
+    text-align: center;
+}
+
+.form-container form p a {
+    color: #2b386e;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.form-container form p a:hover {
+    color: #2a4237;
+}
+
+.error {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+}
 
 @media (max-width: 768px) {
-    .wrapper {
+    .form-container {
         width: 90%;
-        padding: 20px;
+        padding: 1.5rem;
+        border-radius: 1.5rem;
     }
 
-    .wrapper h1 {
-        font-size: 28px;
+    .form-container form {
+        padding: 2rem;
+        border-radius: 1rem;
     }
 
-    .input-box input {
-        font-size: 14px;
-        padding: 15px 40px 15px 15px;
+    .form-container form h3 {
+        font-size: 2.4rem;
+        padding-bottom: 1.5rem;
     }
 
-    .input-box i {
-        font-size: 18px;
+    .form-container form .box {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.2rem;
+        margin: 0.8rem 0;
+        border-radius: 0.6rem;
     }
 
-    .btn {
-        height: 40px;
-        font-size: 14px;
+    .form-container form .btn {
+        font-size: 1.6rem;
+        padding: 0.8rem;
+        border-radius: 0.6rem;
     }
 
-    .agree-terms {
-        font-size: 13px;
+    .form-container form p {
+        font-size: 1.2rem;
+        padding-top: 1.5rem;
     }
 
-    .login-link p {
-        font-size: 13px;
+    .error {
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .wrapper {
+    .form-container {
         width: 95%;
-        padding: 15px;
+        padding: 1rem;
+        border-radius: 1rem;
     }
 
-    .wrapper h1 {
-        font-size: 24px;
+    .form-container form {
+        padding: 1.5rem;
+        border-radius: 0.8rem;
     }
 
-    .input-box input {
-        font-size: 12px;
-        padding: 10px 35px 10px 10px;
+    .form-container form h3 {
+        font-size: 2rem;
+        padding-bottom: 1rem;
     }
 
-    .btn {
-        height: 35px;
-        font-size: 12px;
+    .form-container form .box {
+        font-size: 1.2rem;
+        padding: 0.6rem 1rem;
+        margin: 0.6rem 0;
+        border-radius: 0.5rem;
     }
 
-    .agree-terms {
-        font-size: 12px;
-        text-align: center;
+    .form-container form .btn {
+        font-size: 1.4rem;
+        padding: 0.6rem;
+        border-radius: 0.5rem;
     }
 
-    .login-link p {
-        font-size: 12px;
+    .form-container form p {
+        font-size: 1rem;
+        padding-top: 1rem;
+    }
+
+    .error {
+        font-size: 1rem;
     }
 }

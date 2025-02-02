@@ -2,10 +2,10 @@
 session_start();
 
 
-if (!isset($_SESSION['username'])) {
-    header('Location: OnlineGameStore-LoginForm.php'); 
-    exit();
-}
+//if (!isset($_SESSION['username'])) {
+ //   header('Location: OnlineGameStore-LoginForm.php'); 
+ //   exit();
+//}
 
 $username = htmlspecialchars($_SESSION['username']); 
 $role = htmlspecialchars($_SESSION['role']); 

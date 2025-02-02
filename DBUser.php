@@ -1,3 +1,4 @@
+
 <?php
 include_once 'DBConnection.php';
 
@@ -7,45 +8,43 @@ class DBUser
 
     function __construct()
     {
-        $conn = new DBConnection;
-        $this->connection = $conn;
+        $conn = new DBConnection();
+        $this->connection = $conn->startConn();
     }
 
     function insertUser($user)
     {
-        $conn = $this->connection->startConn();
-
-        $id = $user->getId();
         $userName = $user->getUserName();
         $email = $user->getEmail();
         $password = $user->getPassword();
+        $address = $user->getAddress();
+        $birth_date = $user->getBirth_Date();
 
-        $sql = "INSERT INTO users (id,username,email,password,role) VALUES
-        ('$id','$userName','$email','$password','user')";
-        if (mysqli_query($conn, $sql)) {
-            // echo 'Query executed succesfuly';
+        $sql = "INSERT INTO users (username, email, password, role, address, birth_date) VALUES 
+                ('$userName', '$email', '$password', 'user', '$address', '$birth_date')";
+
+        if (mysqli_query($this->connection, $sql)) {
+            echo 'User inserted successfully';
         } else {
-            echo 'This is an Error' . mysqli_error($conn);
+            echo 'Error: ' . mysqli_error($this->connection);
         }
-
-
     }
+
     function getAllUsers()
     {
-        $conn = $this->connection->startConn();
-
         $sql = "SELECT * FROM users";
-
         $users = [];
 
-        if ($result = $conn->query($sql)) {
+        if ($result = $this->connection->query($sql)) {
             while ($row = $result->fetch_assoc()) {
                 $users[] = new UserEntity(
                     $row['id'],
                     $row['username'],
                     $row['email'],
                     $row['password'],
-                    $row['role']
+                    $row['role'],
+                    $row['address'],
+                    $row['birth_date']
                 );
             }
         } else {
@@ -53,14 +52,13 @@ class DBUser
         }
         return $users;
     }
+
     function getUserById($id)
     {
-        $conn = $this->connection->startConn();
-
         $sql = "SELECT * FROM users WHERE id = '$id'";
 
-        if ($statement = $conn->query($sql)) {
-            $result = $statement->fetch_row();
+        if ($statement = $this->connection->query($sql)) {
+            $result = $statement->fetch_assoc();
             return $result;
         } else {
             return null;
@@ -69,11 +67,9 @@ class DBUser
 
     function getUserEmailPass($email, $password)
     {
-        $conn = $this->connection->startConn();
-
         $sql = "SELECT * FROM users WHERE email = '$email' and password = '$password'";
 
-        if ($statement = $conn->query($sql)) {
+        if ($statement = $this->connection->query($sql)) {
             $result = $statement->fetch_assoc();
             return $result;
         } else {
@@ -83,11 +79,9 @@ class DBUser
 
     function getUserByEmailorUsername($email, $username)
     {
-        $conn = $this->connection->startConn();
+        $sql = "SELECT * FROM users WHERE email = '$email' OR username = '$username'";
 
-        $sql = "SELECT * FROM users WHERE email = '$email' or username ='$username'";
-
-        if ($statement = $conn->query($sql)) {
+        if ($statement = $this->connection->query($sql)) {
             $result = $statement->fetch_assoc();
             return $result;
         } else {
@@ -95,5 +89,4 @@ class DBUser
         }
     }
 }
-
-?>  
+?>

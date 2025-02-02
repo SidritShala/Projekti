@@ -1,77 +1,15 @@
 <?php
-$products = [
-    [
-        "name" => "Forza Horizon 5",
-        "price" => "$59.99",
-        "details" => "Forza Horizon 5 is a racing video game developed by Playground Games. It features an open-world design and dynamic weather.",
-        "rating" => "4.5",
-        "image" => "FORZA HORIZON 5.jpg"
-    ],
-    [
-        "name" => "Call of Duty: Black Ops 6",
-        "price" => "$49.99",
-        "details" => "Call of Duty: Black Ops 6 is a first-person shooter focusing on multiplayer gameplay with advanced combat mechanics.",
-        "rating" => "3.2",
-        "image" => "CALL-OF-DUTY22.jpg"
-    ],
-    [
-        "name" => "NBA2K25",
-        "price" => "$79.99",
-        "details" => "NBA2K25 is a basketball simulation video game developed by Visual Concepts.",
-        "rating" => "4.7",
-        "image" => "NBA2K25-2.jpg"
-    ],
-    // Të dhëna të tjera të produkteve
-    [
-        "name" => "Assassin's Creed® Origins",
-        "price" => "$39.99",
-        "details" => "Assassin’s Creed Origins is an action-adventure game set in an expansive open world that explores the origins of the Assassin Brotherhood.",
-        "rating" => "3.2",
-        "image" => "assasin creed origins.jpg"
-    ],
-    [
-        "name" => "Grand Theft Auto V",
-        "price" => "$89.99",
-        "details" => "Grand Theft Auto V is an open-world action-adventure game set in the sprawling city of Los Santos.",
-        "rating" => "4.2",
-        "image" => "GTA-5-2.jpg"
-    ],
-    
-];
+session_start();
 
-// Të dhënat për komente
-$reviews = [
-    [
-        "text" => "Forza Horizon 5 blew my mind! The graphics are stunning, and the gameplay is top-notch. A must-have for any racing fan!",
-        "author" => "Alex G."
-    ],
-    [
-        "text" => "I've been a fan of GTA for years, and GTA V exceeded all expectations. The story and the open-world gameplay are unparalleled.",
-        "author" => "Jamie L."
-    ],
-    [
-        "text" => "Minecraft is still the ultimate sandbox experience. Whether building or surviving, it never gets old!",
-        "author" => "Chris P."
-    ]
-];
 
-// Të dhënat për lajme
-$news = [
-    [
-        "title" => "New DLC for Forza Horizon 5 Announced",
-        "content" => "Playground Games has just unveiled a brand-new DLC for Forza Horizon 5, introducing exciting new challenges and vehicles."
-    ],
-    [
-        "title" => "Minecraft Receives Major Update",
-        "content" => "The latest update adds new biomes, mobs, and features, making Minecraft better than ever!"
-    ],
-    [
-        "title" => "Upcoming Gaming Expo 2024",
-        "content" => "Mark your calendars! The biggest gaming expo of the year is coming this summer, showcasing the latest and greatest in the gaming world."
-    ]
-];
+//if (!isset($_SESSION['username'])) {
+ //   header('Location: OnlineGameStore-LoginForm.php'); 
+ //   exit();
+//}
+
+//$username = htmlspecialchars($_SESSION['username']); 
+//$role = htmlspecialchars($_SESSION['role']); 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +17,7 @@ $news = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Seller Xbox Games - Illyrian PlayHouse</title>
     <link rel="stylesheet" href="bestseller.css">
-    <script src="bestseller.js" defer></script>
+    <script src="bestseller.js" defer></script> 
 </head>
 <body>
     <header>
@@ -103,47 +41,141 @@ $news = [
         <section class="best-seller">
             <h2>Best-Selling Games</h2>
             <div class="product-list">
-                <?php foreach ($products as $product): ?>
-                    <div class="product" data-name="<?= htmlspecialchars($product['name']) ?>" data-price="<?= htmlspecialchars($product['price']) ?>" data-details="<?= htmlspecialchars($product['details']) ?>" data-rating="<?= htmlspecialchars($product['rating']) ?>">
-                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                        <h3><?= htmlspecialchars($product['name']) ?></h3>
-                        <p>Price: <?= htmlspecialchars($product['price']) ?></p>
-                        <button class="buy-button">Buy Now</button>
-                    </div>
-                <?php endforeach; ?>
+                <!-- Xbox Best Sellers - Page 1 -->
+                <div class="product" data-name="Forza Horizon 5" data-price="$59.99" data-details="Forza Horizon 5 is a racing video game developed by Playground Games. It features an open-world design and dynamic weather." data-rating="4.5">
+                    <img src="images/FORZA HORIZON 5.jpg" alt="Forza Horizon 5">
+                    <h3>Forza Horizon 5</h3>
+                    <p>Price: $59.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Call of Duty: Black Ops 6" data-price="$49.99" data-details="Call of Duty: Black Ops 6 is a first-person shooter focusing on multiplayer gameplay with advanced combat mechanics." data-rating="3.2">
+                    <img src="images/CALL-OF-DUTY22.jpg" alt="Call of Duty: Black Ops 6">
+                    <h3>Call of Duty: Black Ops 6 </h3>
+                    <p>Price: $49.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="NBA2K25" data-price="$79.99" data-details="NBA2K25 is a basketball simulation video game developed by Visual Concepts." data-rating="4.7">
+                    <img src="images/NBA2K25-2.jpg" alt="NBA2K25">
+                    <h3>NBA2K25</h3>
+                    <p>Price: $79.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Assassin's Creed® Origins" data-price="$39.99" data-details="Assassin’s Creed Origins is an action-adventure game set in an expansive open world that explores the origins of the Assassin Brotherhood." data-rating="3.2">
+                    <img src="images/assasin creed origins.jpg" alt="Assassin's Creed® Origins">
+                    <h3>Assassin's Creed® Origins</h3>
+                    <p>Price: $39.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Grand Theft Auto V" data-price="$89.99" data-details="Grand Theft Auto V is an open-world action-adventure game set in the sprawling city of Los Santos." data-rating="4.2">
+                    <img src="images/GTA-5-2.jpg" alt="Grand Theft Auto V">
+                    <h3>Grand Theft Auto V</h3>
+                    <p>Price: $89.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Minecraft" data-price="$49.99" data-details="Build whatever you can imagine in your own infinite world that’s unique in every playthrough." data-rating="4.2">
+                    <img src="images/Minecraft-2.jpg" alt="Minecraft">
+                    <h3>Minecraft</h3>
+                    <p>Price: $49.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Need for Speed™" data-price="$39.99" data-details="Race against time, outsmart the cops, and take on weekly qualifiers to reach The Grand, Lakeshore's ultimate street racing challenge." data-rating="3.2">
+                    <img src="images/need for speed.jpg" alt="Need for Speed™">
+                    <h3>Need for Speed™</h3>
+                    <p>Price: $39.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Tom Clancy's Rainbow Six®" data-price="$29.99" data-details="Call of Duty: Black Ops 6 is a first-person shooter focusing on multiplayer gameplay with advanced combat mechanics." data-rating="2.2">
+                    <img src="images/Tom Clancy's Rainbow Six® Siege Deluxe Edition.jpg" alt="Tom Clancy's Rainbow Six®">
+                    <h3>Tom Clancy's Rainbow Six®</h3>
+                    <p>Price: $29.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="WWE 2K24 Cross-Gen Digital Edition" data-price="$49.99" data-details="Experience a gripping retelling of WrestleMania’s greatest moments in 2K Showcase of the Immortals in WWE 2K24." data-rating="4.2">
+                    <img src="images/wwe.jpg" alt="WWE 2K24 Cross-Gen Digital Edition">
+                    <h3>WWE 2K24 Cross-Gen Digital Edition</h3>
+                    <p>Price: $49.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Mafia: Trilogy" data-price="$59.99" data-details="Uncover the origins of organized crime in Mafia: The Old Country, a gritty mob story set in the brutal underworld of 1900s Sicily." data-rating="4.2">
+                    <img src="images/MafiaTrilogy.jpg" alt="Mafia: Trilogy">
+                    <h3>Mafia: Trilogy</h3>
+                    <p>Price: $59.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="Mad Max" data-price="$49.99" data-details="Become Mad Max, the lone warrior in a savage post-apocalyptic world where cars are the key to survival." data-rating="4.2">
+                    <img src="images/Mad Max.jpg" alt="Mad Max">
+                    <h3>Mad Max</h3>
+                    <p>Price: $49.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+                <div class="product" data-name="The Crew Motorfest Ultimate Edition" data-price="$39.99" data-details="Enjoy a variety of thrilling driving activities and choose how you want to have fun with your cars! Discover more than 20 thematic campaigns: the Playlists." data-rating="3.2">
+                    <img src="images/The Crew Motorfest Cross-Gen Bundle.jpg" alt="The Crew Motorfest Ultimate Edition">
+                    <h3>The Crew Motorfest Ultimate Edition</h3>
+                    <p>Price: $39.99</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
             </div>
-        </section>
-        <section class="reviews">
-            <h2>Player Reviews</h2>
-            <div class="review-grid">
-                <?php foreach ($reviews as $review): ?>
-                    <div class="review">
-                        <p>"<?= htmlspecialchars($review['text']) ?>"</p>
-                        <span>- <?= htmlspecialchars($review['author']) ?></span>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-        <section class="news">
-            <h2>Latest Gaming News</h2>
-            <div class="news-grid">
-                <?php foreach ($news as $item): ?>
-                    <div class="news-item">
-                        <h3><?= htmlspecialchars($item['title']) ?></h3>
-                        <p><?= htmlspecialchars($item['content']) ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-        <section class="newsletter">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter for the latest updates, offers, and news in the gaming universe.</p>
-            <form>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="subscribe-button">Subscribe</button>
-            </form>
         </section>
     </main>
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="gameTitle">Game Title</h2>
+                <p id="gamePrice">Price: $0.00</p>
+            </div>
+            <div class="modal-body">
+                <div id="gameDetails">Game Details</div>
+                <div id="gameRating" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+    </div>
+      <section class="reviews">
+        <h2>Player Reviews</h2>
+        <div class="review-grid">
+            <div class="review">
+                <p>"Forza Horizon 5 blew my mind! The graphics are stunning, and the gameplay is top-notch. A must-have for any racing fan!"</p>
+                <span>- Alex G.</span>
+            </div>
+            <div class="review">
+                <p>"I've been a fan of GTA for years, and GTA V exceeded all expectations. The story and the open-world gameplay are unparalleled."</p>
+                <span>- Jamie L.</span>
+            </div>
+            <div class="review">
+                <p>"Minecraft is still the ultimate sandbox experience. Whether building or surviving, it never gets old!"</p>
+                <span>- Chris P.</span>
+            </div>
+        </div>
+    </section>
+    <section class="news">
+        <h2>Latest Gaming News</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <h3>New DLC for Forza Horizon 5 Announced</h3>
+                <p>Playground Games has just unveiled a brand-new DLC for Forza Horizon 5, introducing exciting new challenges and vehicles.</p>
+            </div>
+            <div class="news-item">
+                <h3>Minecraft Receives Major Update</h3>
+                <p>The latest update adds new biomes, mobs, and features, making Minecraft better than ever!</p>
+            </div>
+            <div class="news-item">
+                <h3>Upcoming Gaming Expo 2024</h3>
+                <p>Mark your calendars! The biggest gaming expo of the year is coming this summer, showcasing the latest and greatest in the gaming world.</p>
+            </div>
+        </div>
+    </section>
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest updates, offers, and news in the gaming universe.</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="subscribe-button">Subscribe</button>
+        </form>
+    </section>
+</main>
+
+<div id="gameModal" class="modal">
+</div>
     <footer>
         <p>&copy; 2024 Illyrian PlayHouse. All rights reserved.</p>
         <div class="footer-links">

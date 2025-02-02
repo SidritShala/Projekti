@@ -3,6 +3,25 @@ require_once 'ProductController.php';
 
 $controller = new ProductController();
 $products = $controller->getAllProducts();
+
+// Handle form submission for adding a product
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $image = $_FILES['image']['name']; // Get the uploaded image file name
+    $imageTmp = $_FILES['image']['tmp_name']; // Get the temporary file location
+
+    // Upload the image to the images directory
+    $imagePath = 'images/' . basename($image);
+    move_uploaded_file($imageTmp, $imagePath);
+
+    // Create a new instance of ProductController and add the product
+    $controller->addProduct($name, $price, $imagePath);
+
+    // Redirect back to the admin products page after adding the product
+    header('Location: adminProducts.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +36,8 @@ $products = $controller->getAllProducts();
     <div class="sidebar">
         <h2>Illyrian PlayHouse</h2>
         <ul>
-            <li><a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="admindashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="AdminUser.php"><i class="fas fa-users"></i> Users</a></li>
-            <li><a href="adminBlogs.php"><i class="fa-solid fa-blog"></i> Blogs</a></li>
             <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
             <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
         </ul>
@@ -39,6 +57,16 @@ $products = $controller->getAllProducts();
             </div>
         </div>
 
+        <!-- Add Product Form -->
+        <div class="add-product-container">
+            <form method="POST" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Product Name" required>
+                <input type="number" name="price" step="0.01" placeholder="Price" required>
+                <input class="file" type="file" name="image" accept="image/*">
+                <input class="submit" type="submit" name="add" value="Add Product">
+            </form>
+        </div>
+
         <!-- Product Table -->
         <h1>Product List</h1>
         <table>
@@ -54,16 +82,17 @@ $products = $controller->getAllProducts();
                 <td><?php echo $product->id; ?></td>
                 <td><?php echo $product->name; ?></td>
                 <td>
-                    <!-- Sigurohu që path-i i imazhit të jetë i saktë -->
                     <img src="<?php echo $product->image; ?>" alt="<?php echo $product->name; ?>" style="width: 100px; height: auto;">
-
                 </td>
                 <td><?php echo $product->description; ?></td>
-                <td><?php echo $product->price; ?></td>
+                <td><?php echo $product->price; ?> &euro;</td>
+                <td class="action-buttons">
+                    <a href="adminProducts.php?delete=<?php echo $product->id; ?>" class="delete" onclick="return confirm('Are you sure you want to delete this product?')"><i class="fas fa-trash"></i> Delete</a>
+                    <a href="editProduct.php?id=<?php echo $product->id; ?>" class="edit"><i class="fas fa-edit"></i> Edit</a>
+                </td>
             </tr>
             <?php endforeach; ?>
         </table>
     </div>
 </body>
 </html>
-

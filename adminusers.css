@@ -9,15 +9,15 @@ body {
     font-family: 'Arial', sans-serif;
     display: flex;
     min-height: 100vh;
-    background-color: #f4f6f9;
-    color: #333;
+    background-color: #2b386e; /* Background Color for Body and Main Content */
+    color: white; /* Text Color */
 }
 
 /* Sidebar Styling */
 .sidebar {
     width: 250px;
-    background-color: #2b386e; /* The color you've chosen */
-    color: #fff;
+    background-color: #0e1536; /* Background Color for Sidebar */
+    color: white; /* Text Color */
     height: 100vh;
     position: fixed;
     padding-top: 20px;
@@ -38,7 +38,7 @@ body {
 }
 
 .sidebar ul li a {
-    color: #fff;
+    color: white; /* Text Color */
     text-decoration: none;
     font-size: 18px;
     display: block;
@@ -48,7 +48,7 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background-color: #1d2d5c;
+    background-color: #ff6f61; /* Hover Background Color */
 }
 
 .sidebar ul li a i {
@@ -60,6 +60,7 @@ body {
     margin-left: 250px; /* Shift content right to make room for sidebar */
     padding: 20px;
     flex-grow: 1;
+    background-color: #2b386e; /* Background Color for Main Content */
 }
 
 /* Header Styling */
@@ -67,26 +68,27 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: #0e1536; /* Background Color for Header */
     padding: 15px 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Box Shadow */
     margin-bottom: 20px;
 }
 
 .header h1 {
     font-size: 24px;
-    color: #333;
+    color: white; /* Text Color */
 }
 
 .actions i {
     margin-left: 20px;
     font-size: 20px;
     cursor: pointer;
+    color: white; /* Text Color */
 }
 
 .actions a {
     text-decoration: none;
-    color: #333;
+    color: white; /* Text Color */
 }
 
 /* Table Styling */
@@ -103,12 +105,12 @@ table th, table td {
 }
 
 table th {
-    background-color: #2b386e; /* Same as sidebar */
-    color: #fff;
+    background-color: #0e1536; /* Same as sidebar */
+    color: white; /* Text Color */
 }
 
 table tr:hover {
-    background-color: #f4f4f4;
+    background-color: #2b386e; /* Hover Background Color */
 }
 
 /* Error & Success Messages */

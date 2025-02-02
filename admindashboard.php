@@ -30,43 +30,94 @@ if (session_start() === PHP_SESSION_NONE) {
             <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
         </ul>
     </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Header -->
-        <div class="header">
-            <h1>Welcome, Admin!</h1>
-            <div class="actions">
-                <i class="fas fa-bell"></i>
-                <i class="fas fa-user-circle"></i>
-
-                <a href="logout.php">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Dashboard Cards -->
-        <div class="cards">
-            <div class="card">
-                <h3>1100</h3>
-                <p>Active Users</p>
-            </div>
-            <div class="card">
-                <h3>320</h3>
-                <p>Products</p>
-            </div>
-            <div class="card">
-                <h3>45</h3>
-                <p>Orders Today</p>
-            </div>
-            <div class="card">
-                <h3>$12,000</h3>
-                <p>Total Revenue</p>
-            </div>
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Header -->
+    <div class="header">
+        <h1>Welcome, Admin!</h1>
+        <div class="actions">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user-circle"></i>
+            <a href="logout.php">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </div>
     </div>
 
+    <!-- Dashboard Cards -->
+    <div class="cards">
+        <div class="card">
+            <h3>850</h3>
+            <p>Active Users</p>
+        </div>
+        <div class="card">
+            <h3>600</h3>
+            <p>Products</p>
+        </div>
+        <div class="card">
+            <h3>75</h3>
+            <p>Orders Today</p>
+        </div>
+        <div class="card">
+            <h3>$30,000</h3>
+            <p>Total Revenue</p>
+        </div>
+    </div>
+
+    <!-- New Dashboard Cards -->
+    <div class="cards">
+        <div class="card">
+            <h3>25</h3>
+            <p>Pending Orders</p>
+        </div>
+        <div class="card">
+            <h3>600</h3>
+            <p>New Visitors</p>
+        </div>
+        <div class="card">
+            <h3>55</h3>
+            <p>Feedback Received</p>
+        </div>
+        <div class="card">
+            <h3>15</h3>
+            <p>Support Tickets</p>
+        </div>
+    </div>
+
+    <!-- Gaming Store Specific Features -->
+    <div class="cards">
+        <div class="card">
+            <h3>Top Selling Games</h3>
+            <p> FC25, GTA V, Call of Duty</p>
+        </div>
+        <div class="card">
+            <h3>Recent Reviews</h3>
+            <p>"Awesome game!" - Antony56</p>
+            <p>"Loved the graphics!" - Garnacho5</p>
+        </div>
+        <div class="card">
+            <h3>Upcoming Releases</h3>
+            <p>Football Manager 25 - Release Date: 10 Feb 2025</p>
+            <p>GTA VI - Release Date: 20 Mar 2025</p>
+        </div>
+        <div class="card">
+            <h3>Stock Alerts</h3>
+            <p>Minecraft: Low Stock</p>
+            <p>need for speed: Out of Stock</p>
+        </div>
+        <div class="card">
+            <h3>Gaming Events</h3>
+            <p>Tournament fortnite - 15 Feb 2025</p>
+        </div>
+        <div class="card">
+            <h3>coming  Items</h3>
+            <p>NBA2k25, Marvel Rivals, Sniper elite</p>
+        </div>
+    </div>
+<!-- Footer -->
+<div class="footer">
+        <p>&copy; 2025 Illyrian PlayHouse. All rights reserved.</p>
+    </div>
 </body>
 
 </html>

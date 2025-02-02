@@ -1,33 +1,25 @@
 <?php
-session_start();
 
-$users = [
-    'admin' => ['password' => 'admin123', 'role' => 'admin'],
-    'user' => ['password' => 'user123', 'role' => 'user']
-];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    if (isset($users[$username]) && $users[$username]['password'] === $password) {
-        // Store session variables
-        $_SESSION['username'] = $username;
-        $_SESSION['role'] = $users[$username]['role'];
-        $_SESSION['logged_in'] = true; 
-
-        // ✅ Set `adminemail` session variable for admindashboard.php compatibility
-        if ($_SESSION['role'] === 'admin') {
-            $_SESSION['adminemail'] = $username; // This is the fix!
-            header('Location: admindashboard.php');
-        } else {
-            header('Location: index.php');
-        }
-        exit();
-    } else {
-        $error = "Invalid username or password.";
-    }
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
 }
+
+// if (isset($_SESSION['useremail'])) {
+//   header('Location:home.php');
+//   exit;
+// }
+
+// if (isset($_SESSION['adminemail'])) {
+//   header('Location:dashboard.php');
+//   exit;
+// }
+
+require_once 'LoginController.php';
+
+$loginController = new LoginController();
+$loginController->handleLogin();
+$errorMsg = $loginController->getErrorMessage();
+
 ?>
 
 <!DOCTYPE html>
@@ -35,33 +27,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Illyrian PlayHouse</title>
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="OnlineGameStore-LoginForm.css">
+ 
 </head>
 <body>
-
-<div class="wrapper">
-    <form method="POST" action="OnlineGameStore-LoginForm.php">
-        <h1>Login</h1>
-        <?php if (isset($error)): ?>
-            <p style="color: red;"><?php echo $error; ?></p>
-        <?php endif; ?>
-        <div class="input-box">
-            <input type="text" name="username" placeholder="Username" required>
-        </div>
-        <div class="input-box">
-            <input type="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="remember-forgot">
-            <label><input type="checkbox"> Remember me</label>
-            <a href="#">Forgot password?</a>
-        </div>
-        <button type="submit" class="btn">Login</button>
-        <div class="register-link">
-            <p>Don't have an account? <a href="SignUp.html">Register</a></p>
-        </div>
-    </form>
-</div>
-
+    <div class="login-page" id="loginPage">
+        <form id="loginForm" method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+            <h3>Login to Your Account</h3>
+            <input type="email" id="email" placeholder="Enter your email" class="box" name="email" required>
+            <span id="emailError" class="error"><?= $loginController->getErrorMessage(); ?></span>
+            <input type="password" id="password" placeholder="Enter your password" class="box" name="password" required>
+            <span id="passwordError" class="error"></span>
+            <div class="remember">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+          <input type="submit" value="Login Now" class="btn" name="Login">
+            <p>Don't have an account? <a href="register.php" id="signup-link">Create now</a></p>
+        </form>
+    </div>
+    <script src="js/login.js"></script>
+    
 </body>
 </html>

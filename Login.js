@@ -1,58 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
- 
-    const usernameInput = document.querySelector('.input-box input[type="text"]');
-    const passwordInput = document.querySelector('.input-box input[type="password"]');
-    const loginButton = document.querySelector('.btn');
-    const rememberCheckbox = document.querySelector('.remember-forgot input[type="checkbox"]');
-    const forgotPasswordLink = document.querySelector('.remember-forgot a');
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('loginForm');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
 
-   
-    loginButton.addEventListener("click", (event) => {
-        event.preventDefault();
+    form.addEventListener('submit', function (e) {
+        let isValid = true;
 
-        const username = usernameInput.value.trim();
-        const password = passwordInput.value.trim();
+        // Clear previous error messages
+        emailError.textContent = '';
+        passwordError.textContent = '';
 
-        if (!username) {
-            alert("Please enter your username.");
-            return;
+        // Validate email
+        if (email.value.trim() === '') {
+            emailError.textContent = 'Email is required.';
+            isValid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+            emailError.textContent = 'Please enter a valid email address.';
+            isValid = false;
         }
 
-        if (!password) {
-            alert("Please enter your password.");
-            return;
+        // Validate password
+        if (password.value.trim() === '') {
+            passwordError.textContent = 'Password is required.';
+            isValid = false;
         }
 
-       
-        console.log("Form Submitted", { username, password, remember: rememberCheckbox.checked });
-        alert("Login successful!");
-    });
-
-   
-    const togglePasswordVisibility = () => {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
+        // Prevent form submission if validation fails
+        if (!isValid) {
+            e.preventDefault();
         }
-    };
-
-   
-    const passwordIcon = document.querySelector('.input-box i.bxs-lock-alt');
-    if (passwordIcon) {
-        passwordIcon.style.cursor = "pointer";
-        passwordIcon.addEventListener("click", togglePasswordVisibility);
-    }
-
-
-    forgotPasswordLink.addEventListener("click", () => {
-        alert("Redirecting to forgot password page...");
     });
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const loginButton = document.querySelector(".btn");
-    loginButton.addEventListener("click", (event) => {
-        event.preventDefault(); 
-        window.location.href = "homepage.html"; 
-    });
-});
+

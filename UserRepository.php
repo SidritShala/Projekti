@@ -1,4 +1,3 @@
-
 <?php
 
 include_once 'UserEntity.php';
@@ -14,7 +13,6 @@ class UserRepository
     }
 
     public function getAllUsers()
-    
     {
         $users = [];
         $query = "SELECT * FROM users";
@@ -22,54 +20,66 @@ class UserRepository
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $users[] = new UserEntity($row['id'], $row['username'], $row['email'], $row['password'], $row['role'], $row['address'], $row['birth_date']);
+                $users[] = new UserEntity(
+                    $row['username'], 
+                    $row['email'], 
+                    $row['password'], 
+                    $row['role'], 
+                    $row['address'], 
+                    $row['birth_date']
+                );
             }
         }
 
         return $users;
     }
 
-    public function getUserById($userId)
+    public function getUserByEmail($email)
     {
-        $query = "SELECT * FROM users WHERE id = ?";
+        $query = "SELECT * FROM users WHERE email = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("i", $userId);
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows === 1) {
             $row = $result->fetch_assoc();
-            return new UserEntity($row['id'], $row['username'], $row['email'], $row['password'], $row['role'],  $row['address'], $row['birth_date']);
+            return new UserEntity(
+                $row['username'], 
+                $row['email'], 
+                $row['password'], 
+                $row['role'],  
+                $row['address'], 
+                $row['birth_date']
+            );
         }
 
         return null;
     }
 
-    public function addUser($username, $email)
+    public function addUser($username, $email, $password, $role, $address, $birth_date)
     {
-        $query = "INSERT INTO users (username, email) VALUES (?, ?)";
+        $query = "INSERT INTO users (username, email, password, role, address, birth_date) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ss", $username, $email);
+        $stmt->bind_param("ssssss", $username, $email, $password, $role, $address, $birth_date);
         return $stmt->execute();
     }
 
-    public function deleteUser($userId)
+    public function deleteUser($email)
     {
-        $query = "DELETE FROM users WHERE id = ?";
+        $query = "DELETE FROM users WHERE email = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("i", $userId);
+        $stmt->bind_param("s", $email);
         return $stmt->execute();
     }
 
-    public function updateUser($userId, $username, $email)
+    public function updateUser($email, $username, $password, $role, $address, $birth_date)
     {
-        $query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+        $query = "UPDATE users SET username = ?, password = ?, role = ?, address = ?, birth_date = ? WHERE email = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ssi", $username, $email, $userId);
+        $stmt->bind_param("sssss", $username, $password, $role, $address, $birth_date, $email);
         return $stmt->execute();
     }
 }
 
 ?>
-
-

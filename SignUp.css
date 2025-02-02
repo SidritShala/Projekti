@@ -1,4 +1,4 @@
-/* General styles */
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,56 +6,49 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Body styling */
+/* Center the form on the page */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #2b386e; /* Your preferred background color */
+    background-color: #2b386e; /* Your preferred color */
 }
 
 /* Form container */
 .form-container {
-    width: 420px;
+    width: 400px;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    border-radius: 10px;
     padding: 30px;
+    border-radius: 10px;
     text-align: center;
+    color: white;
 }
 
-/* Title */
+/* Form heading */
 .form-container h3 {
     font-size: 22px;
     margin-bottom: 15px;
     color: #fff;
 }
 
-/* Form styling */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Input boxes */
+/* Input fields */
 .box {
     width: 100%;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    outline: none;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
+    padding: 10px;
     font-size: 16px;
     color: #fff;
-    padding: 10px;
     margin-bottom: 10px;
 }
 
+/* Placeholder styling */
 .box::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
@@ -66,28 +59,26 @@ form {
     height: 45px;
     background: #fff;
     border: none;
-    outline: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
-    color: #333;
-    font-weight: 600;
+    font-weight: bold;
+    color: #2b386e;
+    cursor: pointer;
     transition: 0.3s ease;
-    margin-top: 10px;
 }
 
 .btn:hover {
     background: #1f2950;
-    color: #fff;
+    color: white;
 }
 
 /* Error messages */
 .error {
     font-size: 14px;
     color: #ff4d4d;
-    margin-bottom: 10px;
     text-align: left;
     width: 100%;
+    display: block;
 }
 
 /* Success message */
@@ -98,19 +89,19 @@ form {
 }
 
 /* Login link */
-.form-container p {
+p {
     font-size: 14px;
     color: #fff;
     margin-top: 15px;
 }
 
-.form-container p a {
+p a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
 
-.form-container p a:hover {
+p a:hover {
     text-decoration: underline;
 }
 

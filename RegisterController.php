@@ -58,7 +58,7 @@ class RegisterController {
 
             $userDBHandler->insertUser($user);
             $this->succedMessage = "Registration successful. Redirecting to login page...";
-            header("Refresh: 3; URL=OnlineGameStore-LoginForm.php");
+            header("Refresh: 3; URL=index.php");
             exit;
         }
     }

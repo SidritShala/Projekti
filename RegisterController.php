@@ -58,7 +58,7 @@ class RegisterController {
 
             $userDBHandler->insertUser($user);
             $this->succedMessage = "Registration successful. Redirecting to login page...";
-            header("Refresh: 3; URL=index.php");
+            header("Refresh: 1; URL=index.php");
             exit;
         }
     }

@@ -5,22 +5,36 @@ $controller = new ProductController();
 $products = $controller->getAllProducts();
 
 // Handle form submission for adding a product
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
-    $image = $_FILES['image']['name']; // Get the uploaded image file name
-    $imageTmp = $_FILES['image']['tmp_name']; // Get the temporary file location
+    $description = $_POST['description']; // Get the product description
+    $image = $_FILES['image']; // Get the uploaded image file
 
-    // Upload the image to the images directory
-    $imagePath = 'images/' . basename($image);
-    move_uploaded_file($imageTmp, $imagePath);
+    // Verifikimi i të dhënave për sigurinë
+    if (empty($name) || empty($price) || empty($description) || empty($image['name'])) {
+        echo "All fields are required.";
+    } elseif (!is_numeric($price) || $price <= 0) {
+        echo "Price must be a positive number.";
+    } else {
+        // Define the path to store the image
+        $imagePath = 'images/' . basename($image['name']);
 
-    // Create a new instance of ProductController and add the product
-    $controller->addProduct($name, $price, $imagePath);
-
-    // Redirect back to the admin products page after adding the product
-    header('Location: adminProducts.php');
-    exit;
+        // Kontrollo nëse imazhi ngarkohet me sukses
+        if (move_uploaded_file($image['tmp_name'], $imagePath)) {
+            // Shto produktin duke përdorur controllerin
+            $controller->addProduct($name, $price, $description, $imagePath);
+            
+            // Përsëri merr listën e produkteve
+            $products = $controller->getAllProducts();
+            
+            // Ridrejto pas shtimit të produktit
+            header('Location: adminProducts.php');
+            exit;
+        } else {
+            echo "Error uploading image.";
+        }
+    }
 }
 ?>
 
@@ -60,10 +74,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
         <!-- Add Product Form -->
         <div class="add-product-container">
             <form method="POST" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Product Name" required>
-                <input type="number" name="price" step="0.01" placeholder="Price" required>
-                <input class="file" type="file" name="image" accept="image/*">
-                <input class="submit" type="submit" name="add" value="Add Product">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" step="0.01" name="price" required>
+
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <input class="submit" type="submit" name="add_product" value="Add Product">
             </form>
         </div>
 
@@ -76,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
                 <th>Image</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Actions</th>
             </tr>
             <?php foreach ($products as $product): ?>
             <tr>

@@ -58,7 +58,13 @@ class ProductRepository {
         $stmt->bindParam(':description', $description, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         
-        return $stmt->execute(); // Kthen true/false
+        $stmt->execute(); // Ekzekutoj pyetjen
+
+        // Verifikoni se produkti është përditësuar
+        if ($stmt->rowCount() > 0) {
+            return true;  // Produkti është përditësuar
+        }
+        return false; // Nuk ka ndodhur asnjë ndryshim
     }
 
     // Shto një produkt të ri
@@ -69,8 +75,12 @@ class ProductRepository {
         $stmt->bindParam(':price', $price, PDO::PARAM_STR);
         $stmt->bindParam(':image', $imagePath, PDO::PARAM_STR);
         $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-        
-        return $stmt->execute(); // Kthen true/false
+
+        // Ekzekutoj pyetjen dhe kthej true/false në varësi të suksesit
+        if ($stmt->execute()) {
+            return true;  // Produkti është shtuar
+        }
+        return false;  // Dështoi të shtohet produkti
     }
 
     // Fshi produktin nga ID
@@ -79,7 +89,10 @@ class ProductRepository {
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         
-        return $stmt->execute(); // Kthen true/false
+        if ($stmt->execute()) {
+            return true;  // Produkti është fshirë
+        }
+        return false; // Dështoi të fshihet produkti
     }
 }
 ?>
